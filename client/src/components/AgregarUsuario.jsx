@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from  'axios';
 import uniquid from 'uniqid';
+import Swal from 'sweetalert2';
 
 function AgregarUsuario() {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
+
+    const navigate = useNavigate();
 
     function addUser() {
 
@@ -19,7 +23,9 @@ function AgregarUsuario() {
 
         axios.post('user/add', newUser)
         .then(res => {
-            alert(res.data)
+            // alert(res.data)
+            Swal.fire('New user added succesfully.', name)
+            navigate('/');
         })
         .then(err => {console.log(err)})
     }
