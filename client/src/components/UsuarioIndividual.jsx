@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 function UsuarioIndividual({ userData }) {
-    console.log('userData ', userData)
+    
     return (
         <div className="container">
             <div className="row">
@@ -12,7 +12,7 @@ function UsuarioIndividual({ userData }) {
                         <li className='list-group-item'>{userData.email}</li>
                         <li className='list-group-item'>{userData.phone}</li>
                     </ul>
-                    <Link to={`/editarUsuario/${userData._id}`}><li className="btn btn-success">Edit</li></Link>
+                    <Link to={`/editarusuario/${userData.idusuario}`}><li className="btn btn-success">Edit</li></Link>
                     &nbsp;
                     <button className="btn btn-danger">Delete</button>
                     <hr className="mt-4"></hr>

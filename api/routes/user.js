@@ -21,7 +21,8 @@ router.post('/add' , (req,res) =>{
     const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        phone: req.body.phone
+        phone: req.body.phone,
+        idusuario: req.body.idusuario
     })
     newUser.save( (err) =>{
         if (!err) {
@@ -33,16 +34,14 @@ router.post('/add' , (req,res) =>{
 })
 
 //Get an user data
-router.post('/edit', async (req, res) => {
-
-  console.log('paramsGET ', req.params.id)
-  try {
-    const userData = await User.findOne({id: req.params.id});
-    res.status(200).send(userData);
-  } catch (e) {
-    res.status(404).send([]);
-  }
-
+router.post('/obtenerdatausuario', (req, res) => {
+  User.find({idusuario: req.body.idusuario}, function(docs, err){
+    if (!err) {
+      res.send(docs)
+    } else {
+      res.send(err)
+    }
+  })
 })
  
 module.exports = router;

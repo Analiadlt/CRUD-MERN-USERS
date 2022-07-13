@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from  'axios';
+import uniquid from 'uniqid';
 
 function AgregarUsuario() {
 
@@ -12,7 +13,8 @@ function AgregarUsuario() {
         var newUser = {
             name: name,
             email: email,
-            phone: phone
+            phone: phone,
+            idusuario: uniquid()
         }
 
         axios.post('user/add', newUser)

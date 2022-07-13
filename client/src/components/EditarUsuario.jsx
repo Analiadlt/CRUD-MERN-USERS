@@ -11,16 +11,15 @@ function EditarUsuario() {
     // const [phone, setPhone] = useState('');
 
     useEffect(() => {
-        //axios.get(`http://localhost:3001/edit/${payload}`);
-        axios.post(`edit/${params.id}`).then(res => {
-            console.log('DATA' , res.data[0])
+        axios.post('/user/obtenerdatausuario', {idusuario: params.idusuario}).then(res=>{
+            console.log(res.data[0])
         })
-    }, [params])
+    }, [params.idusuario])
 
     return (
         <div>
             <h2>Editar Usuario</h2>
-            <h3>El ID del usuario es: {params.id}</h3>
+            <h3>El ID del usuario es: {params.idusuario}</h3>
         </div>
     )
 }
